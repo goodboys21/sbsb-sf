@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/sfup.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/tools/sfup",
+      "methods": ["POST"],
+      "dest": "api/sfup.js"
+    }
+  ]
+}
