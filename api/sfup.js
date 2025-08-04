@@ -34,8 +34,11 @@ module.exports = async (req, res) => {
     form.append("des", "Uploaded via Vercel");
 
     const uploadRes = await axios.post("https://sfile.mobi/guest_remote_parser.php", form, {
-      headers: form.getHeaders()
-    });
+  headers: {
+    ...form.getHeaders(),
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+  }
+});
 
     const urls = [...uploadRes.data.matchAll(/https:\/\/sfile\.mobi\/[a-zA-Z0-9]{10,}/g)].map(m => m[0]);
 
